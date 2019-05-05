@@ -1,13 +1,5 @@
 import discord
 from discord.ext import commands
-
-'''
-await member.ban(reason=reason)
-            embed = discord.Embed(color=0x7027F0)
-            embed.add_field(name=f"Banned user: {member.display_name}", value=f"\n └Reason: {reason}")
-            await ctx.send(embed=embed)
-'''
-
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
