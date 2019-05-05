@@ -33,7 +33,6 @@ class Admin(commands.Cog):
             ]
             await ctx.send(random.choice(NoPermArray))
             return
-
     @commands.command()
     async def kick(self, ctx, member: discord.Member, *, reason: str = None):
         try:
@@ -44,7 +43,6 @@ class Admin(commands.Cog):
         except discord.errors.Forbidden:
             await ctx.send("Looks like i dont have perms to use that command!")
             return
-
     @kick.error
     async def kick_error(self, ctx, error):
         if isinstance(error, commands.MissingPermissions):
