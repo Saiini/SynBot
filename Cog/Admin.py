@@ -14,8 +14,9 @@ class Admin(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member : discord.Member, *, reason : str = None):
-        dm = f"You have been banned from **{ctx.guild.name}**"
-        dm += " "
+        dm = f"You have been banned from **{ctx.guild.name}**."
+        dm += f" Reason: **{reason}**"
+        await member.send(dm)
         await member.ban(reason=reason)
         embed = discord.Embed(color=0x7027F0)
         embed.add_field(name=f"Banned user: {member.display_name}", value=f"\n └ Reason: {reason}")
