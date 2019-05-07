@@ -3,7 +3,6 @@ from discord.ext import commands
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member : discord.Member, *, reason : str = None):
