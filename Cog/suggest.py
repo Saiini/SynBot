@@ -4,6 +4,7 @@ import random
 class suggest(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        
     @commands.command()
     async def suggest(self, ctx, *, suggestion : str = None):
         # I **know** you wanted to suggest something, what is it?
