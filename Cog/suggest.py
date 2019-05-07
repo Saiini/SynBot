@@ -25,6 +25,5 @@ class suggest(commands.Cog):
         await msg.add_reaction("✅")
         await msg.add_reaction("❌")
         await ctx.send("Suggestion added!")
-# adds cog
 def setup(bot):
     bot.add_cog(suggest(bot))
