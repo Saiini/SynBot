@@ -14,8 +14,9 @@ class announce(commands.Cog):
         announcer = ctx.message.author
         footer += f"-{announcer}"
         body += f"{announcement}\n"
+
         embed = discord.Embed(color=0xDC143C)
-        embed.add_field(name=f"{body}", value=footer)
+        embed.add_field(name=' ', value=body + footer) #must fix
         await ctx.send('Announced!')
         await channel.send(embed=embed)
         await channel.send("@everyone")
