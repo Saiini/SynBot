@@ -8,14 +8,14 @@ class announce(commands.Cog):
     async def announce(self, ctx, *, announcement: str = None):
         """So you want to announce something huh? well... Do it!"""
         await ctx.send('Sending...')
-        header = ""  # Header
         body = ""  # Body
+        footer = ""
         channel = ctx.guild.get_channel(492621819950661653)  # CHANGE IF THIS HAS BEEN REMOVED
         announcer = ctx.message.author
-        header += "Hey @everyone,\n"
-        body += f"{announcement}\n -{announcer}"
+        footer += f"-{announcer}"
+        body += f"{announcement}\n"
         embed = discord.Embed(color=0xDC143C)
-        embed.add_field(name="***- SynPvp -***", value=header + body)
+        embed.add_field(name=f"{body}", value=footer)
         await ctx.send('Announced!')
         await channel.send(embed=embed)
         await channel.send("@everyone")
