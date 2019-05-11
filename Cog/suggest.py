@@ -6,7 +6,7 @@ class suggest(commands.Cog):
         self.bot = bot
     @commands.command()
     async def suggest(self, ctx, *, suggestion : str = None):
-        # I **know** you wanted to suggest something, what is it?
+        # I **know** you wanted to suggest something, what was it?
         if suggestion == None:
             '''see if we are suggesting... nothing?'''''
             NothingArray = [

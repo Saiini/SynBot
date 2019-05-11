@@ -3,9 +3,10 @@ from discord.ext import commands
 cogs = [
     "Cog.suggest",
     "Cog.Admin",
-    "Cog.announce"
+    "Cog.announce",
+    "Cog.appeal"
 ]
-bot = commands.Bot(command_prefix=">")
+bot = commands.Bot(command_prefix="~")
 bot.remove_command('help')
 #loads the cogs list
 if __name__ == '__main__':
