@@ -22,14 +22,11 @@ class appeal(commands.Cog):
                 option = await self.bot.wait_for('message', timeout=210)
             except Exception:
                 option = None
+            if option.clean_content.lower().startswith('y' or 'Y') == False:
+                # automatically stop
+                return await ctx.author.send("Something went wrong: **You were suppsed to reply with Y or Stop, please try again...\nStopping...\nStopped**")
             if option.clean_content.lower().startswith('y' or 'Y'):
                 await ctx.author.send("Perfect! Now that we have that out of the way, please give me the __**Main Reason**__ you were banned\n")
-            if not option.clean_content.lower().startswith('y' or 'Y'):
-                # automatically stop
-                await ctx.author.send("Something went wrong: **You were suppsed to reply with Y or Stop, please try again...\nStopping...\nStopped**")
-                option = None
-                ign = None
-                return
                 try:
                     reason = await self.bot.wait_for('message', timeout=210)
                 except Exception:
