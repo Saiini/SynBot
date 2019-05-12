@@ -3,47 +3,43 @@ from discord.ext import commands
 class appeal(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        '''
-        This really ugly code works for some strange reason...
-        '''
     @commands.command()
-    @commands.cooldown(rate=1, per=16)
+    #@commands.cooldown()
     async def appeal(self, ctx):
-        author = ctx.author
         channel = self.bot.get_channel(576971106376744960)
+        await ctx.message.add_reaction("📬")
+        await ctx.author.send("To appeal, please specify your __**IGN**__")
         try:
-            await ctx.message.add_reaction("📬")
-            await ctx.send("*Sent you a dm!*")
-            await ctx.author.send(f"Hey **{author}**!\nIt appears you would like to appeal for a ban, Lets get started shall we?\nPlease list your __**IGN**__ for me")
-            ign = await self.bot.wait_for('message', timeout=200)
+            ign = await self.bot.wait_for('message', timeout=210)
+        except Exception:
+            ign = None
+            await ctx.author.send("Something went wrong...\nStopping...")
+        if not ign:
+            return None
+        else:
+            await ctx.author.send(f"Alright, so i got **{ign.clean_content}**... Is that correct? [Y/stop]")
             try:
-                await ctx.author.send(f'Alright *{ign.clean_content}*, please tell me the __**main reason**__ you were banned')
-                reason = await self.bot.wait_for('message', timeout=200)
+                option = await self.bot.wait_for('message', timeout=210)
+            except Exception:
+                option = None
+            if option.clean_content.lower().startswith('y' or 'Y'):
+                await ctx.author.send("Perfect! Now that we have that out of the way, please give me the __**Main Reason**__ you were banned\n")
                 try:
-                    await ctx.author.send(f"Okay, so you were banned for: **{reason.clean_content}**, is this correct? [y/stop]")
-                    option = await self.bot.wait_for('message', timeout=200)
-                    try:
-                        if option.clean_content == 'y':
-                            await ctx.author.send("Okay! Now that we have that out of the way, what type of ban did you recieve? [Perm/Temp]")
-                            ban_type = await self.bot.wait_for('message', timeout=200)
-                            try:
-                                await ctx.author.send("Oki-Doki! We have everything set! The staff members will look at your ban appeal shortly.\n Thank you for your time!")
-                                embed = discord.Embed(color=0x7C0A02)
-                                embed.add_field(name="Ban Appeal", value=f"IGN: *{ign.clean_content}*\n Reason for ban: *{reason.clean_content}*\n Ban type: *{ban_type.clean_content}*\n Discord: *{author}*")
-                                await channel.send(embed=embed)
-                            except Exception:
-                                return
-                        if option.clean_content == 'stop':
-                            await ctx.author.send("*Stopping...*")
-                            await ctx.author.send("*Stopped!*")
-                            return
-                    finally:
-                        return
-                finally:
-                    return
-            finally:
+                    reason = await self.bot.wait_for('message', timeout=210)
+                except Exception:
+                    reason = None
+                await ctx.author.send("Okay! Now for the final step: __**Why should we unban you?**__")
+                try:
+                    user_reason = await self.bot.wait_for('message', timeout=70)
+                except Exception:
+                    user_reason = None
+                await ctx.author.send("Alright! You are all set! The staff members at Syn will dm you shortly about your ban appeal. Thank you ~")
+                embed = discord.Embed(color=0xDC143C)
+                footer = f"\n\nDiscord: {ctx.message.author}"
+                embed.add_field(name="Ban appeal ~", value=f"IGN: **{ign.clean_content}**\nReason For Ban: **{reason.clean_content}**\nWhy this user should be unbanned: {user_reason.clean_content}\n" + footer)
+                await channel.send(embed=embed)
+            elif ign.content.lower().startswith('stop'):
+                await ctx.author.send("*Stopping...*\nStopped!")
                 return
-        finally:
-            return
 def setup(bot):
     bot.add_cog(appeal(bot))
