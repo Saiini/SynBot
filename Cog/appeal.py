@@ -39,7 +39,7 @@ class appeal(commands.Cog):
                 await ctx.author.send("Alright! You are all set! The staff members at Syn will dm you shortly about your ban appeal. Thank you ~")
                 embed = discord.Embed(color=0xDC143C)
                 footer = f"\n\nDiscord: {ctx.message.author}"
-                embed.add_field(name="Ban appeal ~", value=f"IGN: **{ign.clean_content}**\nReason For Ban: **{reason.clean_content}**\nWhy this user should be unbanned: {user_reason.clean_content}\n" + footer)
+                embed.add_field(name="Ban appeal ~", value=f"IGN: **{ign.clean_content}**\nReason For Ban: **{reason.clean_content}**\nWhy this user should be unbanned: **{user_reason.clean_content}**\n" + footer)
                 await channel.send(embed=embed)
             elif ign.content.lower().startswith('stop'):
                 await ctx.author.send("*Stopping...*\nStopped!")
