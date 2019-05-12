@@ -7,8 +7,10 @@ class appeal(commands.Cog):
         This really ugly code works for some strange reason...
         '''
     @commands.command()
-    #@commands.cooldown(rate=12, per=0)
-    async def appeal(self, ctx):
+    @commands.cooldown(rate=1, per=16)
+    async def appeal(self, ctx, *, user : discord.Member):
+        for msg in user.history(limit=40):
+            await msg.delete()
         author = ctx.author
         channel = self.bot.get_channel(576971106376744960)
         try:
@@ -37,14 +39,13 @@ class appeal(commands.Cog):
                             await ctx.author.send("*Stopping...*")
                             await ctx.author.send("*Stopped!*")
                             return
-                    except Exception:
+                    finally:
                         return
-                except Exception:
+                finally:
                     return
-            except Exception:
+            finally:
                 return
-        except Exception:
-            await ctx.send("You must open your dms in order to appeal!")
+        finally:
             return
 def setup(bot):
     bot.add_cog(appeal(bot))
