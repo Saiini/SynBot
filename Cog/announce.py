@@ -5,7 +5,7 @@ class announce(commands.Cog):
         self.bot = bot
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def announce(self, ctx, *, announcement: str = None):
+    async def announce(self, ctx, *, announcement : str = None):
         """So you want to announce something huh? well... Do it!"""
         await ctx.send('Sending...')
         body = ""  # Body
@@ -14,7 +14,6 @@ class announce(commands.Cog):
         announcer = ctx.message.author
         footer += f"-{announcer}"
         body += f"{announcement}\n"
-
         embed = discord.Embed(color=0xDC143C)
         embed.add_field(name=' ', value=body + footer) #must fix
         await ctx.send('Announced!')

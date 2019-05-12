@@ -6,12 +6,16 @@ class Admin(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member : discord.Member, *, reason : str = None):
+        '''ban someone'''
         dm = f"You have been banned from **{ctx.guild.name}**."
         dm += f" Reason: **{reason}**"
-        await member.send(dm)
+        try:
+            await member.send(dm)
+        except Exception:
+            await ctx.send("This members DM's are not open! So i didnt send their reason of why they are banned!")
         await member.ban(reason=reason)
         embed = discord.Embed(color=0x7027F0)
-        embed.add_field(name=f"Banned user: {member.display_name}", value=f"\n └ Reason: {reason}")
+        embed.add_field(name=f"Banned user: {member.display_name}", value=f"\n   └ Reason: {reason}\n└ 🏷: {member}")
         await ctx.send(embed=embed)
     @commands.command()
     @commands.has_permissions(ban_members=True)
