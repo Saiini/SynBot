@@ -8,9 +8,7 @@ class appeal(commands.Cog):
         '''
     @commands.command()
     @commands.cooldown(rate=1, per=16)
-    async def appeal(self, ctx, *, user : discord.Member):
-        for msg in user.history(limit=40):
-            await msg.delete()
+    async def appeal(self, ctx):
         author = ctx.author
         channel = self.bot.get_channel(576971106376744960)
         try:
