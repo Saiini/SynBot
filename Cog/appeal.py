@@ -20,7 +20,7 @@ class appeal(commands.Cog):
                 await ctx.author.send(f'Alright *{ign.clean_content}*, please tell me the __**main reason**__ you were banned')
                 reason = await self.bot.wait_for('message', timeout=200)
                 try:
-                    await ctx.author.send(f"Okay, so you were banned for: **{reason.clean_content}**, is this correct? [y/n/stop]")
+                    await ctx.author.send(f"Okay, so you were banned for: **{reason.clean_content}**, is this correct? [y/stop]")
                     option = await self.bot.wait_for('message', timeout=200)
                     try:
                         if option.clean_content == 'y':
