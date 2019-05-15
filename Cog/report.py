@@ -8,7 +8,8 @@ class report(commands.Cog):
     async def report(self, ctx, *, ignprompt : str = None):
         author = ctx.message.author
         def check(msg):
-            return msg.author.id == ctx.author.id
+            if msg.guild == None:
+                return msg.author.id == ctx.author.id
         if ignprompt == None:
             await ctx.send("You must provide an IGN in order to report!")
             return
