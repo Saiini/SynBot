@@ -4,9 +4,9 @@ class report(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     @commands.command()
+    @commands.cooldown(10, 2.5)
     async def report(self, ctx, *, ignprompt : str = None):
         author = ctx.message.author
-
         def check(msg):
             return msg.author.id == ctx.author.id
         if ignprompt == None:
@@ -22,6 +22,5 @@ class report(commands.Cog):
             await channel.send(embed=embed)
         except Exception as error:
             return print(error)
-
 def setup(bot):
     bot.add_cog(report(bot))
