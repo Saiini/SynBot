@@ -52,11 +52,25 @@ class Admin(commands.Cog):
         except:
             await ctx.send(member.mention + "has been un-muted")
         role = discord.utils.get(member.guild.roles, name="Muted")
+        if role == None:
+            await ctx.send("That user isnt muted!")
         try:
             await member.remove_roles(role)
             return
         except:
             await ctx.send("It appears you do not have enough permission to do that - sorry!")
             return
+    @commands.command()
+    @commands.has_permissions(kick_members=True)
+    async def warn(self, ctx, member : discord.Member, *, reason : str = None):
+        await ctx.send(f"{member.mention} has been warned!")
+        dm = f"You have been warned in **{ctx.guild.name}**!"
+        try:
+            await member.send(dm)
+        except:
+            return
+        warning_1 = discord.utils.get(member.guild.roles, name="Warned")
+        await member.add_roles(warning_1)
+
 def setup(bot):
     bot.add_cog(Admin(bot))

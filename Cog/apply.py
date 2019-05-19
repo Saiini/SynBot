@@ -16,8 +16,7 @@ class apply(commands.Cog):
             try:
                 ign = await self.bot.wait_for('message', check=check, timeout=200)
                 try:
-                    await ctx.author.send(
-                        f"Alright **__{ign.clean_content}__**, Please tell me how you would benifit the server - Note: You can use embeds")
+                    await ctx.author.send(f"Alright **__{ign.clean_content}__**, Please tell me how you would benifit the server - Note: You can use embeds")
                     benifit = await self.bot.wait_for('message', check=check, timeout=200)
                     await ctx.author.send("Alright! Now that we have that out of the way, please give me **all of the alts** you have had on the server - be honest, because we will check.")
                     alts_list = await self.bot.wait_for('message', check=check, timeout=200)
