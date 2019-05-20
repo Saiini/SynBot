@@ -4,6 +4,7 @@ from discord.ext import commands
 class Admin(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member : discord.Member, *, reason : str = None):
@@ -18,6 +19,7 @@ class Admin(commands.Cog):
         embed = discord.Embed(color=0x7027F0)
         embed.add_field(name=f"Banned user: {member.display_name}", value=f"\n   └ Reason: {reason}\n")
         await ctx.send(embed=embed)
+
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def kick(self, ctx, member : discord.Member, *, reason: str = None):
@@ -25,6 +27,7 @@ class Admin(commands.Cog):
         embed = discord.Embed(color=0x7127F0)
         embed.add_field(name=f"Kick user: {member.display_name}", value=f"\n └ Reason: {reason}")
         await ctx.send(embed=embed)
+
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def mute(self, ctx, member : discord.Member, *, reason : str = None):
@@ -43,6 +46,7 @@ class Admin(commands.Cog):
         except:
             await ctx.send("It appears you do not have enough permission to do that - sorry!")
             return
+
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def unmute(self, ctx, member : discord.Member, *, reason : str = None):
@@ -60,6 +64,7 @@ class Admin(commands.Cog):
         except:
             await ctx.send("It appears you do not have enough permission to do that - sorry!")
             return
+
     @commands.command()
     @commands.has_permissions(kick_members=True)
     async def warn(self, ctx, member : discord.Member, *, reason : str = None):
@@ -72,5 +77,12 @@ class Admin(commands.Cog):
         warning_1 = discord.utils.get(member.guild.roles, name="Warned")
         await member.add_roles(warning_1)
 
+    @commands.command()
+    @commands.has_permissions(kick_members=True)
+    async def purge(self, ctx, msg : int):
+        try:
+            await ctx.purge(limit=msg)
+        except:
+            return
 def setup(bot):
     bot.add_cog(Admin(bot))
