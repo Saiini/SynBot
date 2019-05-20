@@ -84,5 +84,9 @@ class Admin(commands.Cog):
             await ctx.purge(limit=msg)
         except:
             return
+
+        '''
+        TODO: Add ModMail
+        '''
 def setup(bot):
     bot.add_cog(Admin(bot))
