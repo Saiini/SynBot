@@ -81,7 +81,7 @@ class Admin(commands.Cog):
     @commands.has_permissions(kick_members=True)
     async def purge(self, ctx, msg : int):
         try:
-            await ctx.purge(limit=msg)
+            await ctx.channel.purge(limit=msg+1)
         except:
             return
 
