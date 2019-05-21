@@ -6,7 +6,8 @@ cogs = [
     "Cog.announce",
     "Cog.report",
     "Cog.appeal",
-    "Cog.apply"
+    "Cog.apply",
+    "Cog.status"
 ]
 bot = commands.Bot(command_prefix="~")
 bot.remove_command('help')

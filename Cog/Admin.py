@@ -84,9 +84,8 @@ class Admin(commands.Cog):
             await ctx.channel.purge(limit=msg+1)
         except:
             return
-
-        '''
-        TODO: Add ModMail
-        '''
+'''@commands.command()
+@commands.has_permissions(ban_members=True)
+async def hackban(self, ctx, user : str = None):'''
 def setup(bot):
     bot.add_cog(Admin(bot))
