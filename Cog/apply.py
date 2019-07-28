@@ -8,7 +8,6 @@ class apply(commands.Cog):
     async def apply(self, ctx):
         await ctx.send("The application session has started - please check your dms!")
         channel = self.bot.get_channel(604400706778300438)
-
         def check(msg):
             if msg.guild == None:
                 return msg.author.id == ctx.author.id
@@ -32,11 +31,6 @@ class apply(commands.Cog):
                     await ctx.author.send("Please give me your age")
                     age = await self.bot.wait_for('message', check=check, timeout=200)
                     if age.clean_content == "stop":
-                        await ctx.author.send("No problem! \n\n*Stopping session...|100%|*")
-                        return
-                    await ctx.author.send("Please give me the position you're applying for\n\n Example: ***Admin***\n > please note: ***You cannot apply for the owner position***\n[~~y/n/~~stop]")
-                    position = await self.bot.wait_for('message', check=check, timeout=200)
-                    if position.clean_content == "stop":
                         await ctx.author.send("No problem! \n\n*Stopping session...|100%|*")
                         return
                     await ctx.author.send("What device do you play on? \n[~~y/n/~~stop]")
@@ -66,7 +60,7 @@ class apply(commands.Cog):
                         return
                     await ctx.author.send("You are all finished with your staff application! You will be dm'd shortly if you are accepted!")
                     embed = discord.Embed(color=0x0000)
-                    embed.add_field(name=f"Staff application by: **{ctx.author}**",value=f"Their IGN: **{ign.clean_content}**\nWhy they want to be staff: **{benifit.clean_content}**\nTheir alts: **{alts_list.clean_content}**\nTheir age: **{age.clean_content}**\nThe position they're applying for: **{position.clean_content}**\nWhat device they play on: **{device.clean_content}**\nWhat they would do if there was a glitcher on the server: **{glitcher.clean_content}**\nStaff experience: **{staff_exper.clean_content}**\nDo they have experience with screenshare? **{screenshare.clean_content}**\nMistakes they've made before: **{mistakes.clean_content}**")
+                    embed.add_field(name=f"Staff application by: **{ctx.author}**", value=f"Their IGN: **{ign.clean_content}**\nWhy they want to be staff: **{benifit.clean_content}**\nTheir alts: **{alts_list.clean_content}**\nTheir age: **{age.clean_content}**\nWhat device they play on: **{device.clean_content}**\nWhat they would do if there was a glitcher on the server: **{glitcher.clean_content}**\nStaff experience: **{staff_exper.clean_content}**\nDo they have experience with screenshare? **{screenshare.clean_content}**\nMistakes they've made before: **{mistakes.clean_content}**")
                     await channel.send(embed=embed)
                 except:
                     return
@@ -74,8 +68,8 @@ class apply(commands.Cog):
                 return
         except Exception:
             return
-        
-        
+
+
     # for when we... get removed...
     # rip...
     @commands.command()
