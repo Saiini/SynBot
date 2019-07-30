@@ -7,7 +7,8 @@ cogs = [
     # "Cog.report",
     # "Cog.appeal",
     "Cog.apply",
-    "Cog.status"
+    "Cog.status",
+    "Cog.scmd"
 ]
 bot = commands.Bot(command_prefix="~")
 bot.remove_command('help')
@@ -19,4 +20,4 @@ if __name__ == '__main__':
             print(f"loaded {cog}")
         except Exception as error:
             print(f"ERROR: {error}\n IN COG {cog}")
-bot.run("NTc0NDIwMjg2MTY2Nzk0MjUw.XM80Uw.16Ibkl5dfLTn3qGw3XCzlkK2VCA")
+bot.run("NjAyMTc4NTU4NjkzMjEyMTgx.XTd41Q.e8MYUX1rolR5Q3s8H44KLsngQwI")
