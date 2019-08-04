@@ -1,3 +1,8 @@
+# APPARENTLY I WAS USING A FUCKING FORK
+# SO I IMPLEMENTED THE ENTIRE CLASS INTO THE PROJECT
+# - saiini
+# LINK: https://github.com/barneygale/MCRcon
+
 import collections
 import struct
 
