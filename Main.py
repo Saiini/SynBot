@@ -1,7 +1,7 @@
 from discord.ext import commands
 # https://discordapp.com/oauth2/authorize/?permissions=402653227&scope=bot&client_id=574420286166794250
 cogs = [
-    # "Cog.suggest",
+    "Cog.suggest",
     "Cog.Admin",
     "Cog.announce",
     # "Cog.report",
