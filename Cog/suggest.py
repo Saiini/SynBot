@@ -16,7 +16,7 @@ class suggest(commands.Cog):
             ]
             await ctx.send(random.choice(NothingArray))
             return
-        channel = ctx.guild.get_channel(574424471163895829) # CHANGE IF CHANNEL WAS DELETED
+        channel = ctx.guild.get_channel(609077416962555924) # CHANGE IF CHANNEL WAS DELETED
         author = ctx.message.author
         embed = discord.Embed(color=0x005DF5)
         user_pf = author.avatar_url
