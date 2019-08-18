@@ -10,7 +10,7 @@ class announce(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def announce(self, ctx, *, announcement : str = None):
-        enders = re.compile("[.!?]")
+        enders = re.compile("[~]")
         summonText = enders.split(announcement)
         channel = ctx.guild.get_channel(492621819950661653)
         embed = discord.Embed(color=0xE3AA44, title=f"**{summonText[0]}**", description=f"{''.join(summonText[1:])}")
