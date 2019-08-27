@@ -7,7 +7,7 @@ cogs = [
     # "Cog.report",
     # "Cog.appeal",
     "Cog.apply",
-    "Cog.status",
+    #"Cog.status",
     "Cog.scmd"
 ]
 bot = commands.Bot(command_prefix="/")
