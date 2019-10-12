@@ -4,10 +4,10 @@ cogs = [
     "Cog.suggest",
     "Cog.Admin",
     "Cog.announce",
-    # "Cog.report",
-    # "Cog.appeal",
+    "Cog.report",
+    "Cog.appeal",
     "Cog.apply",
-    #"Cog.status",
+    "Cog.status",
     "Cog.scmd"
 ]
 bot = commands.Bot(command_prefix="/")
